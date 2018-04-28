@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.hp.billing.dao.UserDao">
+	<resultMap type="com.hp.billing.model.User" id="baseUserMap">
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="age" property="age" jdbcType="INTEGER" />
+	</resultMap>  
+    <insert id="insertUser" parameterType="com.hp.billing.model.User">  
+        insert into user values(#{name, jdbcType=VARCHAR}, #{age, jdbcType=INTEGER})
+    </insert>
+    <select id="getUserList" resultMap="baseUserMap">
+    	select * from user
+    </select>  
+</mapper>
